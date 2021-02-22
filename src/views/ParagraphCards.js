@@ -2,12 +2,14 @@ import './ParagraphCards.css'
 import { Link, useParams, useRouteMatch } from "react-router-dom";
 import { fakeParagraphs } from '../views/fakeData';
 import { useEffect, useState} from 'react';
+import { connect } from 'react-redux'
 import {BASEURL} from "../config";
 import axios from "axios";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
-function ParagraphCards() {
+const Paragraphs = (props) => {
+  console.log('state', props.selectedArticle)
   let { url } = useRouteMatch();
   let { articleTitle } = useParams();
   // let paragraphs = fakeParagraphs;
@@ -23,7 +25,7 @@ function ParagraphCards() {
     let arg = {
       "userId": "0",
       "taskType": "MRC",
-      "articleId": "articleId2cc6edb8"
+      "articleId": props.selectedArticle.id
     }
     await axios.post(actionURL, arg).then(
       function(response) {
@@ -55,7 +57,7 @@ function ParagraphCards() {
       </div>
       <div className="start-start flex-wrap">
         {paragraphs.map((paragraph, idx) => (
-          <Link className="paragraph-link" to={`${url}/${idx}`}>
+          <Link key={idx} className="paragraph-link" to={`${url}/${idx}`}>
             <div key={idx} className="paragraph-card-container center-center f-16">
               <div className="paragraph-counter center-center mb-20">0</div>
               <div>
@@ -80,4 +82,6 @@ function ParagraphCards() {
   )
 }
 
+const mapStateToProps = (state) => ({selectedArticle: state.article})
+const ParagraphCards = connect(mapStateToProps, null)(Paragraphs)
 export default ParagraphCards;

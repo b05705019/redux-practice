@@ -41,7 +41,7 @@ function MainContent(props) {
     }
     await axios.post(actionURL, arg).then(
       function(response) {
-        // console.log(response.data);
+        console.log("articles", response.data);
         setArticles(response.data);
       }
     )
