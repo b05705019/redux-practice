@@ -1,18 +1,18 @@
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
 import './Labeling.css'
 import { fakeQuestionsHistory } from './fakeData'
-import React from 'react';
+import { useState } from 'react';
 
 function Labeling() {
   let history = useHistory();
   let { params } = useRouteMatch();
   let {articleTitle, paragraph} = params;
-  const [question, setQuestion] = React.useState("");
-  const [answer, setAnswer] = React.useState("");
-  const [startIndex, setStartIndex] = React.useState(0);
-  const [isFixedAnswer, setIsFixedAnswer] = React.useState(true);
-  const [labelButtonCss, setLabelButtonCss] = React.useState("label-button justify-center nowrap");
-  const [buttonString, setButtonString] = React.useState("標記答案");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [startIndex, setStartIndex] = useState(0);
+  const [isFixedAnswer, setIsFixedAnswer] = useState(true);
+  const [labelButtonCss, setLabelButtonCss] = useState("label-button justify-center nowrap");
+  const [buttonString, setButtonString] = useState("完成標記");
   //[TODO]: change fake data
   const fakeQuestions = fakeQuestionsHistory;
   const maxParagraph = 10;
