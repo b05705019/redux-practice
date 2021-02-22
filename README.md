@@ -2,6 +2,12 @@
 
 ## Most important
 Please create your own branch for your features. If you need to merge your branch to master, please create a new pull request (PR) and contact to other members.
+## Redux
+1. related files and directories:
+    * _actions, _reducers, index.js
+    * Ref:
+        1. https://chentsulin.github.io/redux/docs/basics/UsageWithReact.html
+        2. https://react-redux.js.org/introduction/basic-tutorial
 ## Components
 1. Smaller elements can be created to be a component, while bigger ones would be views.
 ## Views
